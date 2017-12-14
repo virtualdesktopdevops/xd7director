@@ -45,13 +45,13 @@ class xd7director::config inherits xd7director {
   
   #Redirect from default IIS page to Director
   if $https {
-    file{'c:/inetpub/wwwroot/DirectorHomePage.html':
+    file{'c:/inetpub/wwwroot/index.html':
       ensure  => file,
       content => template('xd7director/director_https.erb')  
     }
   }
   else {
-    file{'c:/inetpub/wwwroot/DirectorHomePage.html':
+    file{'c:/inetpub/wwwroot/index.html':
       ensure  => file,
       content => template('xd7director/director_http.erb')  
     }
