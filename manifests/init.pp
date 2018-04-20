@@ -11,20 +11,20 @@
 # Sample Usage:
 #
 class xd7director (
-  $director_svc_username,
-  $director_svc_password,
-  $setup_svc_username,
-  $setup_svc_password,
-  $sourcePath,
-  $deliveryControllers,
-  $loadbalandedDirector = false,
-  $loadbalancedDirectorFqdn = '',
-  $https = false,
-  $sslCertificateSourcePath = '',
-  $sslCertificatePassword = '',
-  $sslCertificateThumbprint = '',
-  $caCertificateSourcePath = '',
-  $caCertificateThumbprint = ''
+  String $director_svc_username,
+  String $director_svc_password,
+  String $setup_svc_username,
+  String $setup_svc_password,
+  String $sourcepath,
+  String $deliverycontrollers,
+  Optional[Boolean] $loadbalandeddirector    = false,
+  Optional[String] $loadbalanceddirectorfqdn = '',
+  Optional[Boolean] $https                   = false,
+  Optional[String] $sslcertificatesourcepath = '',
+  Optional[String] $sslcertificatepassword   = '',
+  Optional[String] $sslcertificatethumbprint = '',
+  Optional[String] $cacertificatesourcepath  = '',
+  Optional[String] $cacertificatethumbprint  = ''
 )
 
 {
@@ -34,10 +34,10 @@ class xd7director (
   contain xd7director::sslconfig
 
   #Install Director & IIS before configuring the service account (IIS_IUSRS group needed in serviceaccounts.pp)
-  Class['::xd7director::install'] ->
-  Class['::xd7director::serviceaccounts'] ->
-  Class['::xd7director::config'] ->
-  Class['::xd7director::sslconfig']
+  Class['::xd7director::install']
+->Class['::xd7director::serviceaccounts']
+->Class['::xd7director::config']
+->Class['::xd7director::sslconfig']
 
   reboot { 'dsc_reboot':
     when    => pending,

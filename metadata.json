@@ -1,13 +1,13 @@
 {
-  "author": "citrixdeployment",
+  "author": "virtualdesktopdevops",
   "dependencies": [
-	{ 
-		"name": "puppetlabs/dsc", 
-		"version_requirement": ">= 1.4.0"
+	{
+		"name": "virtualdesktopdevops/dsc",
+		"version_requirement": ">= 1.5.0"
 	}
   ],
   "license": "Apache-2.0",
-  "name": "citrixdeployment-xd7director",
+  "name": "virtualdesktopdevops-xd7director",
   "operatingsystem_support": [
     {
       "operatingsystem": "windows",
@@ -17,15 +17,15 @@
       ]
     }
   ],
-  "project_page": "https://www.citrixdeployment.com",
+  "project_page": "https://www.virtualdesktopdevops.com",
   "requirements": [
   	{
       "name": "puppet",
-      "version_requirement": ">= 3.8.0 < 6.0.0"
+      "version_requirement": ">= 4.0.0 < 6.0.0"
     }
   ],
-  "source": "https://www.citrixdeployment.com",
-  "summary": "Xendesktop 7.x Director installation & linking to an existing XenApp/XenDesktop deployment",
+  "source": "https://www.virtualdesktopdevops.com",
+  "summary": "Puppet modules installing Citrix Director, which provides Citrix XenDesktop 7.x deployment monitoring capabilities. Director is linked to the XenApp/XenDesktop site Delivery Controllers and configured for Kerberos SSO login, enhancing security level and speeding access to the monitoring interface.",
   "tags": [
     "powershell",
     "dsc",
