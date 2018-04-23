@@ -21,16 +21,16 @@ A full list of changes in each version can be found in the [change log](CHANGELO
 
 
 ## Integration informations ##
-Citrix Director runs with service account to improve security and allow the deployment of multiple Director instances (Director Pool) configured for Kerberos SSO login behind a load-balancer.
-All the Director nodes in a Director Pool must have their Director IIS ApplicationPool be configured with the same service account and the same SPN.
+Citrix Director runs with the identity of a service account to improve security and allow the deployment of multiple Director instances (Director Pool) configured for Kerberos SSO login behind a load-balancer.
+All the Director nodes in a Director Pool must have their Director IIS ApplicationPool be configured to use the same service account and the same SPN.
 
 The module can be installed on a Standard, Datacenter version of Windows 2012R2 or Windows 2016. **Core version is not supported by Citrix for Director installation**.
 
-Migrated puppet example code in README.md to future parser syntax (4.x). Impact on parameters refering to remote locations (file shares) which have to be prefixed with \\\\ instead of the classical \\. This is because of Puppet >= 4.x parsing \\ as a single \ in single-quoted strings. Use parser = future in puppet 3.x /etc/puppet/puppet.conf to use this new configuration in your Puppet 3.x and prepare Puppet 4.x migration.
+Puppet example code has been updated to future parser syntax (4.x). All the parameters refering to remote locations (file shares) have to be prefixed with \\\\ instead of the classical \\. This is because of Puppet >= 4.x parsing \\ as a single \ in single-quoted strings. Use parser = future in puppet 3.x /etc/puppet/puppet.conf to use this module in your existing Puppet 3.x deployment and prepare Puppet 4.x migration.
 
 ## Usage ##
-### xd7director ###
-This class will install and configure IIS and Citrix Director.
+### xd7director parameters###
+
 - **`[String]` director_svc_username** _(Required)_: Director service account (on which Director IIS ApplicationPool will run). Use **username** format. **DO NOT** use DOMAIN\username format.
 - **`[String]` director_svc_password** _(Required)_: Password of the Director service account. Should be encrypted with hiera-eyaml.
 - **`[String]` setup_svc_username** _(Required)_: Privileged account used by Puppet for installing the software.
@@ -46,6 +46,7 @@ This class will install and configure IIS and Citrix Director.
 - **`[String]` cacertificatesourcepath** _(Required if https = true)_: Location of the SSL Certification Autority root certificate (PEM or CER format). Can be local folder, UNC path, HTTP URL)
 - **`[String]` cacertificatethumbprint** _(Required if https = true)_: Thumbprint of the SSL Certification Autority root certificate (available in the SSL certificate).
 
+### xd7director example code###
 ~~~puppet
 node 'director' {
   class{'xd7director':
