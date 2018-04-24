@@ -25,6 +25,7 @@
     }
   ],
   "source": "https://www.virtualdesktopdevops.com",
+  "issues_url": "https://github.com/virtualdesktopdevops/xd7director/issues",
   "summary": "Puppet modules installing Citrix Director, which provides Citrix XenDesktop 7.x deployment monitoring capabilities. Director is linked to the XenApp / XenDesktop site Delivery Controllers and configured for Kerberos SSO login, enhancing security level and speeding access to the monitoring interface.",
   "tags": [
     "powershell",
